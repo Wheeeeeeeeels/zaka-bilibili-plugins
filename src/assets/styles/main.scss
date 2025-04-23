@@ -1,0 +1,115 @@
+// 哥特式主题变量
+$gothic-primary: #8b0000;
+$gothic-secondary: #2d1b2b;
+$gothic-accent: #ff0000;
+$gothic-dark: #1a1a1a;
+$gothic-light: #ffffff;
+
+// 基础样式重置
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'MedievalSharp', cursive;
+  background-color: $gothic-dark;
+  color: $gothic-light;
+  line-height: 1.6;
+}
+
+// 哥特式装饰元素
+.gothic-border {
+  border: 2px solid $gothic-primary;
+  border-radius: 8px;
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border: 1px solid rgba($gothic-accent, 0.3);
+    border-radius: 10px;
+    pointer-events: none;
+  }
+}
+
+// 哥特式按钮样式
+.gothic-button {
+  background: linear-gradient(135deg, $gothic-primary 0%, darken($gothic-primary, 20%) 100%);
+  color: $gothic-light;
+  border: none;
+  padding: 12px 24px;
+  font-family: 'MedievalSharp', cursive;
+  font-size: 1.1rem;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  box-shadow: 0 0 15px rgba($gothic-primary, 0.3);
+  
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba($gothic-primary, 0.5);
+  }
+  
+  &:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+}
+
+// 哥特式卡片样式
+.gothic-card {
+  background: rgba($gothic-secondary, 0.8);
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent 0%, rgba($gothic-primary, 0.1) 100%);
+    z-index: 1;
+  }
+}
+
+// 动画效果
+@keyframes gothic-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba($gothic-accent, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba($gothic-accent, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba($gothic-accent, 0);
+  }
+}
+
+.gothic-pulse {
+  animation: gothic-pulse 2s infinite;
+}
+
+// 响应式设计
+@media (max-width: 768px) {
+  .gothic-card {
+    padding: 15px;
+  }
+  
+  .gothic-button {
+    padding: 10px 20px;
+    font-size: 1rem;
+  }
+} 
